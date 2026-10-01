@@ -1,0 +1,12 @@
+.venv/
+venv/
+env/
+
+data/raw/
+data/processed/
+data/processed/
+models/*.pkl
+models/*.pt
+outputs/figures/*.png
+__pycache__/
+*.pyc
