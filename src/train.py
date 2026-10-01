@@ -47,7 +47,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--data_dir", default=str(DATA_PROC))
     ap.add_argument("--out_dir", default=str(OUT_DIR))
-    ap.add_argument("--epochs", type=int, default=8)
+    ap.add_argument("--epochs", type=int, default=20)
     ap.add_argument("--batch_size", type=int, default=16)
     ap.add_argument("--lr", type=float, default=3e-4)
     ap.add_argument("--wd", type=float, default=1e-4)
@@ -103,9 +103,7 @@ def main():
             print(f"  saved best (val_auc={auc:.4f})")
 
         elapsed = time.time() - t0
-        if elapsed + (time.time() - te) > args.time_budget_min * 60 and ep < args.epochs:
-            print(f"Time budget reached after epoch {ep}; stopping.")
-            break
+        
 
     df = pd.DataFrame(hist)
     df.to_csv(os.path.join(args.out_dir, "history.csv"), index=False)
